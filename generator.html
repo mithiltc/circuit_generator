@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Circuit Generator</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<div class="glass-card large">
+
+<h1 class="page-title">
+Circuit Generator
+</h1>
+
+<textarea
+id="description"
+placeholder="Describe your circuit..."
+></textarea>
+
+<select id="tool">
+<option>Multisim</option>
+<option>Proteus</option>
+<option>LTSpice</option>
+<option>MATLAB Simulink</option>
+</select>
+
+<button id="generateBtn" class="primary-btn">
+Generate Circuit
+</button>
+
+</div>
+
+</div>
+
+<script src="js/generate.js"></script>
+
+</body>
+</html>
