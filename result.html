@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Results</title>
+    <title>CircuitAI - Results</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -16,38 +16,60 @@
 
 <div class="page-container">
 
-<div class="glass-card large">
+    <div class="glass-card large">
 
-<h1 class="page-title">
-Generated Circuit
-</h1>
+        <h1 class="page-title">
+            Generated Circuit
+        </h1>
 
-<img id="circuitImage">
+        <div class="mb-4">
+            <h3 class="text-lg">
+                Tool Used:
+                <span id="toolUsed" class="font-bold"></span>
+            </h3>
+        </div>
 
-<div class="button-group">
+        <img
+            id="circuitImage"
+            src=""
+            alt="Generated Circuit"
+            class="circuit-image"
+        >
 
-<button class="primary-btn">
-Download Circuit
-</button>
+        <div class="button-group">
 
-<button class="secondary-btn">
-Download Report
-</button>
+            <button
+                id="downloadCircuit"
+                class="primary-btn"
+            >
+                Download Circuit
+            </button>
+
+            <button
+                id="downloadReport"
+                class="secondary-btn"
+            >
+                Download Report
+            </button>
+
+        </div>
+
+        <div class="suggestion-box">
+
+            <h2 class="text-xl font-bold mb-3">
+                AI Suggestions
+            </h2>
+
+            <ul id="suggestions">
+            </ul>
+
+        </div>
+
+    </div>
 
 </div>
 
-<div class="suggestion-box">
-
-<h2>
-AI Suggestions
-</h2>
-<ul id="suggestions"></ul>
-
-</div>
-
-</div>
-
-</div>
+<script src="js/result.js"></script>
 
 </body>
 </html>

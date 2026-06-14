@@ -149,3 +149,11 @@ margin-top:10px;
 .suggestion-box li{
 margin-bottom:10px;
 }
+
+.circuit-image{
+    width:100%;
+    max-width:800px;
+    border-radius:15px;
+    margin:20px auto;
+    display:block;
+}
