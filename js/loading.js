@@ -1,43 +1,106 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
-    const statusText =
-        document.getElementById("statusText");
 
-    const messages = [
+const statusText =
+    document.getElementById("statusText");
 
-        "Analyzing circuit requirements...",
+const messages = [
 
-        "Selecting components...",
+    "Analyzing circuit requirements...",
 
-        "Building circuit architecture...",
+    "Selecting components...",
 
-        "Generating AI suggestions...",
+    "Building circuit architecture...",
 
-        "Preparing final output..."
-    ];
+    "Generating AI suggestions...",
 
-    let current = 0;
+    "Preparing final output..."
 
-    const interval = setInterval(() => {
+];
+
+let current = 0;
+
+const interval = setInterval(() => {
+
+    if (current < messages.length) {
 
         statusText.innerText =
             messages[current];
 
         current++;
 
-        if (current >= messages.length) {
+    }
 
-            clearInterval(interval);
+}, 1000);
 
+const description =
+    localStorage.getItem(
+        "circuitDescription"
+    );
+
+const tool =
+    localStorage.getItem(
+        "selectedTool"
+    );
+
+try {
+
+    console.log(
+        "Sending request..."
+    );
+
+    const response = await fetch(
+        "http://127.0.0.1:8000/generate",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type":
+                    "application/json"
+            },
+
+            body: JSON.stringify({
+                description,
+                tool
+            })
         }
+    );
 
-    }, 1000);
+    const data =
+        await response.json();
+
+    console.log(
+        "API RESPONSE:",
+        data
+    );
+
+    localStorage.setItem(
+        "generatedResult",
+        JSON.stringify(data)
+    );
+
+    clearInterval(interval);
 
     setTimeout(() => {
 
         window.location.href =
             "result.html";
 
-    }, 5000);
+    }, 1000);
 
+}
+
+catch (error) {
+
+    console.error(
+        "API ERROR:",
+        error
+    );
+
+    clearInterval(interval);
+
+    statusText.innerText =
+        "Generation Failed";
+
+}
 });
